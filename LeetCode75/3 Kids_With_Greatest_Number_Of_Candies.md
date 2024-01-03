@@ -47,7 +47,50 @@ Kid 1 will always have the greatest number of candies, even if a different kid i
 * `1 <= candies[i] <= 100`
 * `1 <= extraCandies <= 50`
 
-
 ## Java Solution:-
 
 #### Method 1:-
+
+    class Solution {
+        public List`<Boolean>` kidsWithCandies(int[] candies, int extraCandies) {
+            int candiesLength = candies.length;
+            boolean flag = true;
+            List `<Boolean>` boolCandies = new ArrayList();
+            for (int i = 0; i < candiesLength; i++) {
+                int num = candies[i];
+                int addedCandies = num + extraCandies;
+                for (int j = 0; j < candiesLength; j++) {
+                    if (i == j) continue;
+                    if (addedCandies < candies[j]) {
+                        flag = false;
+                        break;
+                    }
+                }
+                boolCandies.add(flag);
+                flag=true;
+            }
+            return boolCandies;
+        }
+    }
+
+#### Method 2:
+
+
+    class Solution {
+        public List`<Boolean>` kidsWithCandies(int[] candies, int extraCandies) {
+            int candiesLength = candies.length;
+            int max = 0;
+            List `<Boolean>` boolCandies = new ArrayList();
+            for (int candy: candies) {
+                max = max > candy ? max : candy;
+            }
+            for (int i = 0; i < candiesLength; i++) {
+                if ((candies[i] + extraCandies) < max) {
+                    boolCandies.add(false);
+                    continue;
+                }
+                boolCandies.add(true);
+            }
+            return boolCandies;
+        }
+    }
