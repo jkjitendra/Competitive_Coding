@@ -33,3 +33,42 @@ You must write an algorithm that runs in `O(n)` time and without using the divis
 ## Solution
 
 #### Method 1:
+
+    class Solution {
+        public int[] productExceptSelf(int[] nums) {
+            int n = nums.length;
+            int[] totalProduct = new int[n];
+            int total;
+            for (inti = 0; i < n; i++) {
+                total = 1;
+                for (intj = 0; j < n; j++) {
+                    if (i != j) {
+                        total *= nums[j];
+                    }
+                }
+                totalPoduct[i] = total;
+            }
+            return totalProduct;
+        }
+    }
+
+#### Method 2:
+
+    classSolution {
+        public int[] productExceptSelf(int[] nums) {
+            int n = nums.length;
+            int[] totalProduct = new int[n];
+            totalProduct[0] = 1;
+            int product = 1;
+            for (inti = 1; i < n; i++) {
+                product = nums[i-1] * product;
+                totalProduct[i] = product;
+            }
+            product = 1;
+            for (inti = n - 1; i >= 0; i--) {
+                totalProduct[i] = product * totalProduct[i];
+                product = nums[i] * product;
+            }
+            return totalProduct;
+        }
+    }
