@@ -40,7 +40,55 @@ You must write an algorithm that uses only constant extra space.
 * `1 <= chars.length <= 2000`
 * `chars[i]` is a lowercase English letter, uppercase English letter, digit, or symbol.
 
-
 ## Solution:
 
 #### Method 1:
+
+    class Solution {
+        public int compress(char[] chars) {
+
+            int charsLength = chars.length;
+            if (charsLength <= 1) {
+                return charsLength;
+            }
+
+            int newLength = 0;
+            char currentChar = chars[0];
+            int count = 1;
+
+            for (int i = 1; i < charsLength; i++) {
+                if (currentChar == chars[i]) {
+                    count++;
+                } else {
+                    newLength = appendCharacterAndItsCount(chars, currentChar, newLength, count);
+                    currentChar = chars[i];
+                    count = 1;
+                }
+            }
+            newLength = appendCharacterAndItsCount(chars, currentChar, newLength, count);
+            return newLength;
+        }
+
+        private static int appendCharacterAndItsCount(char[] chars, charcurrentChar, intnewLength, intcount) {
+            chars[newLength] = currentChar;
+            newLength++;
+
+            if (count > 1) {
+                int position = newLength;
+
+                while (count > 0) {
+                    char mod = (char) (count % 10 + '0');
+                    count = count / 10;
+
+                    for (int i = position; i > newLength; i--) {
+                        chars[position] = chars[position - 1];
+                    }
+
+                    chars[newLength] = mod;
+                    position++;
+                }
+                newLength = position;
+            }
+            return newLength;
+        }
+    }
