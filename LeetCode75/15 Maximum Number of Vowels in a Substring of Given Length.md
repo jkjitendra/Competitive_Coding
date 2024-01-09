@@ -71,17 +71,20 @@ Given a string `s` and an integer `k`, return *the maximum number of vowel lette
             int n = s.length();
             if (n < k) return 0;
             int currentIndex = 0, indexLeft = 0;
-            int maxNoOfVowel = 0, countOfVowel = 0;
+            int maxNoOfVowel = 0, countNoOfVowel = 0;
             byte[] byteOfString = s.getBytes();
             byte[] vowel = newbyte[123];
             vowel['a'] = vowel['e'] = vowel['u'] = vowel['i'] = vowel['o'] = 1;
             while (currentIndex < k) {
-                countOfVowel += vowel[byteOfString[currentIndex++]];
+                countNoOfVowel += vowel[byteOfString[currentIndex++]];
             }
-            maxNoOfVowel = countOfVowel;
+            maxNoOfVowel = countNoOfVowel;
             while (currentIndex < n) {
-                countOfVowel += vowel[byteOfString[currentIndex++]] - vowel[byteOfString[indexLeft++]];
-                if (countOfVowel > maxNoOfVowel && (maxNoOfVowel = countOfVowel) == k) {
+                countNoOfVowel += vowel[byteOfString[currentIndex++]] - vowel[byteOfString[indexLeft++]];
+                if (countOfVowel > maxNoOfVowel) {
+                    maxNoOfVowel = countNoOfVowel;
+                }
+                if (maxNoOfVowel == k){
                     return k;
                 }
             }
