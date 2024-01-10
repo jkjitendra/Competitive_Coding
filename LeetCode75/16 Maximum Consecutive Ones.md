@@ -25,7 +25,6 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 * `nums[i]` is either `0` or `1`.
 * `0 <= k <= nums.length`
 
-
 ## Solution:
 
 #### Method 1:
@@ -52,7 +51,6 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
             return maxNoOfConsecutiveOnes;
         }
     }
-
 
 #### Method 2:
 
