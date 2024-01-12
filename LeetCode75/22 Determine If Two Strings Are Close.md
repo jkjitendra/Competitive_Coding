@@ -41,7 +41,7 @@ Apply Operation 2: "<u>baa</u>ccc" -> "<u>abb</u>ccc"
 
 **Constraints:**
 
-* `1 <= word1.length, word2.length <= 10~5~`
+* `1 <= word1.length, word2.length <= 10<sup>5</sup>`
 * `word1` and `word2` contain only lowercase English letters.
 
 
