@@ -31,28 +31,24 @@ There are no more pairs that sum up to 6, hence a total of 1 operation.</pre>
 * `1 <= nums[i] <= 10<sup>9</sup>`
 * `1 <= k <= 10<sup>9</sup>`
 
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public int maxOperations(int[] nums, int k) {
-
             if (nums.length < 2) {
                 return 0;
             }
-
             int filteredLength = 0;
             for(int num: nums) {
                 if (num < k) {
                     nums[filteredLength++] = num;
                 }
             }
-
             Arrays.sort(nums, 0, filteredLength);
             int leftIdx = 0, rightIdx = filteredLength-1, count = 0;
-
             while (leftIdx < rightIdx) {
                 int sum = nums[leftIdx] + nums[rightIdx];
                 if (sum == k) {
@@ -68,3 +64,4 @@ There are no more pairs that sum up to 6, hence a total of 1 operation.</pre>
             return count;
         }
     }
+```

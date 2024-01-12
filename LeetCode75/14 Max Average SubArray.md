@@ -29,24 +29,21 @@ Find a contiguous subarray whose **length is equal to** `k` that has the maximum
 
 #### Method 1:
 
+```java
     class Solution {
         public double findMaxAverage(int[] nums, int k) {
             if (nums.length == 1 && k == 1) return nums[0];
             double avg = 0.0, max = -Double.MAX_VALUE;
             int i = 0, j, lastIndex = nums.length - k;
-
             while (i <= lastIndex) {
                 j = i;
                 double sum = 0.0;
-
                 while (j < k+i) {
                     sum += nums[j];
                     j++;
                 }
-
                 avg = sum/k;
                 i++;
-
                 if (max < avg) {
                     max = avg;
                 }
@@ -54,27 +51,26 @@ Find a contiguous subarray whose **length is equal to** `k` that has the maximum
             return max;
         }
     }
-
+```
 
 #### Method 2:
 
+```java
     class Solution {
         public double findMaxAverage(int[] nums, int k) {
             if (nums.length == 1 && k == 1) return nums[0];
-
             double sum = 0;
             int n = nums.length, currentIndex = k;
             for (int i = 0; i < k; i++) {
                 sum += nums[i];
             }
-
             double maxVal = sum;
             while (currentIndex < n) {
                 sum += nums[currentIndex] - nums[currentIndex-k];
                 maxVal = Math.max(maxVal, sum);
                 currentIndex++;
             }
-
             return maxVal/k;
         }
     }
+```

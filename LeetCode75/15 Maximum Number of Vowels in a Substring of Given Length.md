@@ -33,11 +33,11 @@ Given a string `s` and an integer `k`, return *the maximum number of vowel lette
 * `s` consists of lowercase English letters.
 * `1 <= k <= s.length`
 
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public int maxVowels(String s, int k) {
             int n = s.length();
@@ -63,9 +63,11 @@ Given a string `s` and an integer `k`, return *the maximum number of vowel lette
             return 0;
         }
     }
+```
 
 #### Method 2:
 
+```java
     class Solution {
         public int maxVowels(String s, int k) {
             int n = s.length();
@@ -91,3 +93,4 @@ Given a string `s` and an integer `k`, return *the maximum number of vowel lette
             return maxNoOfVowel;
         }
     }
+```

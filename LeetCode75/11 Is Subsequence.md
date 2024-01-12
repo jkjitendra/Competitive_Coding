@@ -26,11 +26,11 @@ A **subsequence** of a string is a new string that is formed from the original s
 
 **Follow up:** Suppose there are lots of incoming `s`, say `s<sub>1</sub>, s<sub>2</sub>, ..., s<sub>k</sub>` where `k >= 10<sup>9</sup>`, and you want to check one by one to see if `t` has its subsequence. In this scenario, how would you change your code?
 
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public boolean isSubsequence(String s, String t) {
             if (s.length() == 0 && t.length() == 0) return true;
@@ -45,3 +45,4 @@ A **subsequence** of a string is a new string that is formed from the original s
             return count == s.length();
         }
     }
+```

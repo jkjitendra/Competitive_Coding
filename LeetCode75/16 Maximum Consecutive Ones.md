@@ -29,6 +29,7 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 
 #### Method 1:
 
+```java
     class Solution {
         public int longestOnes(int[] nums, int k) {
             int n = nums.length;
@@ -51,9 +52,11 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
             return maxNoOfConsecutiveOnes;
         }
     }
+```
 
 #### Method 2:
 
+```java
     class Solution {
         public int longestOnes(int[] nums, int k) {
             int n = nums.length;
@@ -71,3 +74,4 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
             return endOfWindow - startOfWindow;
         }
     }
+```

@@ -35,19 +35,17 @@ Return  *the maximum amount of water a container can store* .
 
 #### Method 1:
 
+```java
     class Solution {
         public int maxArea(int[] height) {
             int leftIdx = 0, rightIdx = height.length - 1;
             int max = 0, minHeight;
-
             while (leftIdx < rightIdx){
                 minHeight = Math.min(height[leftIdx], height[rightIdx]);
                 max = Math.max(max, minHeight * (rightIdx - leftIdx));
-
                 while(leftIdx < rightIdx && height[leftIdx] <= minHeight) {
                     leftIdx++;
                 }
-
                 while(leftIdx < rightIdx && height[leftIdx] <= minHeight) {
                     rightIdx--;
                 }
@@ -55,3 +53,4 @@ Return  *the maximum amount of water a container can store* .
             return max;
         }
     }
+```

@@ -32,12 +32,12 @@ Return *the size of the longest non-empty subarray containing only *`1` *'s in t
 * `1 <= nums.length <= 10<sup>5</sup>`
 * `nums[i]` is either `0` or `1`.
 
-
 ## Solution:
 
 #### Method 1:
 
-    class Solution {
+```Java
+   class Solution {
         public int longestOnes(int[] nums, int k) {
             int n = nums.length;
             int startOfWindow = 0, endOfWindow = 0;
@@ -54,3 +54,4 @@ Return *the size of the longest non-empty subarray containing only *`1` *'s in t
             return endOfWindow - startOfWindow;
         }
     }
+```

@@ -2,7 +2,6 @@
 
 ## Problem Statement:
 
-
 Given an integer array `nums`, move all `0`'s to the end of it while maintaining the relative order of the non-zero elements.
 
 **Note** that you must do this in-place without making a copy of the array.
@@ -26,26 +25,25 @@ Given an integer array `nums`, move all `0`'s to the end of it while maintaining
 
 **Follow up:** Could you minimize the total number of operations done?
 
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public void moveZeroes(int[] nums) {
             int numsLength = nums.length;
             int currentIndex = 0;
             int i = 0;
-
             for (; i < numsLength; i++) {
                 if (nums[i] != 0) {
                     nums[currentIndex] = nums[i];
                     currentIndex++;
                 }
             }
-
             for(i = currentIndex; i < numsLength; i++) {
                 nums[i] = 0;
             }
         }
     }
+```

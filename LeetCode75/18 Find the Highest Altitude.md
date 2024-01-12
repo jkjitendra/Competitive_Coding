@@ -26,11 +26,11 @@ You are given an integer array `gain` of length `n` where `gain[i]` is the **net
 * `1 <= n <= 100`
 * `-100 <= gain[i] <= 100`
 
-
 ## Solution:
 
 #### Method 1:
 
+```Java
     class Solution {
         public int largestAltitude(int[] gain) {
             int n = gain.length;
@@ -50,10 +50,13 @@ You are given an integer array `gain` of length `n` where `gain[i]` is the **net
             return maxHeight;
         }
     }
+```
+
 
 
 #### Method 2:
 
+```Java
     class Solution {
         public int largestAltitude(int[] gain) {
             int sum = 0, maxAltitude = 0;
@@ -64,3 +67,4 @@ You are given an integer array `gain` of length `n` where `gain[i]` is the **net
             return maxAltitude;
         }
     }
+```

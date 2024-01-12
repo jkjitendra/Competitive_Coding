@@ -36,6 +36,7 @@ Given an integer array `nums`, return `true` * if there exists a triple of indic
 
 #### Method 1:
 
+```java
     class Solution {
         public boolean increasingTriplet(int[] nums) {
             int first = Integer.MAX_VALUE;
@@ -51,3 +52,4 @@ Given an integer array `nums`, return `true` * if there exists a triple of indic
             return false;
         }
     }
+```
