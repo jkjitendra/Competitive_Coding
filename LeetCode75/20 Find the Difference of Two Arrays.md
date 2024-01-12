@@ -31,7 +31,30 @@ Every integer in nums2 is present in nums1. Therefore, answer[1] = [].
 * `1 <= nums1.length, nums2.length <= 1000`
 * `-1000 <= nums1[i], nums2[i] <= 1000`
 
-
 ## Solution:
 
 #### Method 1:
+
+```java
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        boolean[] nums1Array = new boolean[2001];
+        boolean[] nums2Array = new boolean[2001];
+        List<Integer> answer0 = new ArrayList<>();
+        List<Integer> answer1 = new ArrayList<>();
+        List<List<Integer>> answer = new ArrayList<>();
+        for (int num : nums1) {
+            nums1Array[num+1000] = true;
+        }
+        for (int num : nums2) {
+            nums2Array[num+1000] = true;
+        }
+        for (int i = 0; i < 2001; i++) {
+            if (nums1Array[i] && !nums2Array[i]) answer0.add(i-1000);
+            if (nums2Array[i] && !nums1Array[i]) answer1.add(i-1000);
+        }
+        answer.add(answer0);
+        answer.add(answer1);
+        return answer;
+}
+```
