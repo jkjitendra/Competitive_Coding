@@ -33,6 +33,7 @@ Given two strings `str1` and `str2`, return *the largest string *`x`* such that 
 
 #### Method 1:
 
+```java
     class Solution {
     	public String gcdOfStrings(String str1, String str2) {
 	        if (!(str1 + str2).equals(str2 + str1)) {
@@ -50,24 +51,25 @@ Given two strings `str1` and `str2`, return *the largest string *`x`* such that 
             return str1Len;
         }
     }
-
+```
 
 #### Method 2:
 
+```java
     class Solution {
     	public String gcdOfStrings(String str1, String str2) {
-                int str1Len = str1.length();
-                int str2Len = str2.length();
-                int minLen = Math.min(str1Len, str2Len);
-	        for (int i = minLen; i > 0; i--) {
-		     if ((str1Len % i == 0) && (str2Len % i == 0)) {
-                         String divisor = str1.substring(0, i);
-                         if (isFormingActualString(divisor, str1) && isFormingActualString(divisor, str2)) {
-                           return divisor;
-                         }
-                     }
-       		}
-	        return "";
+            int str1Len = str1.length();
+            int str2Len = str2.length();
+            int minLen = Math.min(str1Len, str2Len);
+            for (int i = minLen; i > 0; i--) {
+                if ((str1Len % i == 0) && (str2Len % i == 0)) {
+                    String divisor = str1.substring(0, i);
+                    if (isFormingActualString(divisor, str1) && isFormingActualString(divisor, str2)) {
+                        return divisor;
+                    }
+                }
+       	    }
+	    return "";
     	}
         private boolean isFormingActualString(String divisor, int str) {
             StringBuffer sb = new StringBuffer();
@@ -78,3 +80,4 @@ Given two strings `str1` and `str2`, return *the largest string *`x`* such that 
             return sb.toString().equals(str);
         }
     }
+```

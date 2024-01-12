@@ -30,7 +30,6 @@ You are given two strings word1 and word2. Merge the strings by adding letters i
     Input: word1 = "abcd", word2 = "pq"
     Output: "apbqcd"
 
-
     Explanation: Notice that as word1 is longer, "cd" is appended to the end.
     word1:  a   b   c   d
     word2:    p   q
@@ -42,17 +41,16 @@ You are given two strings word1 and word2. Merge the strings by adding letters i
 
 ``word1 and word2 consist of lowercase English letters.``
 
-
 ## Java Solution:-
 
 #### Method 1:-
 
+```java
     class Solution {
         public String mergeAlternately(String word1, String word2) {
             int word1Len = word1.length();
             int word2Len = word2.length();
-
-    StringBuffer mergedWord = new StringBuffer(word1Len+word2Len);
+            StringBuffer mergedWord = new StringBuffer(word1Len+word2Len);
             int i = 0, j = 0;
             for (; i < word1Len && j < word2Len; i++, j++) {
                 mergedWord.append(String.valueOf(word1.charAt(i)) + String.valueOf(word2.charAt(j)));
@@ -66,10 +64,11 @@ You are given two strings word1 and word2. Merge the strings by adding letters i
             return mergedWord.toString();
         }
     }
-
+```
 
 #### Method 2:-
 
+```java
     class Solution {
         public String mergeAlternately(String word1, String word2) {
             StringBuilder result = new StringBuilder();
@@ -86,3 +85,4 @@ You are given two strings word1 and word2. Merge the strings by adding letters i
             return result.toString();
         }
     }
+```

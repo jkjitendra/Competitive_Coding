@@ -85,11 +85,12 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
 
 #### Method 3:
 
+```java
     class Solution {
         public boolean reverseVowels(String s) {
             int len = s.length();
             StringBuilder sb = new StringBuilder();
-            Stack`<Character>` charStack = new Stack();
+            Stack<Character> charStack = new Stack();
             for (int i = 0; i < len; i++) {
                 char c = s.charAt(i);
                 if (!isVowel(c)) {
@@ -114,6 +115,7 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
             return false;
         }
     }
+```
 
 #### Method 4:
 
