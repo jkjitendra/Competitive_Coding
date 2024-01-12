@@ -27,6 +27,7 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
 
 #### Method 1:
 
+```java
     class Solution {
         public boolean reverseVowels(String s) {
             int len = s.length();
@@ -53,9 +54,11 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
             return sb.toString();
         }
     }
+```
 
 #### Method 2:
 
+```java
     class Solution {
         public boolean reverseVowels(String s) {
             int len = s.length();
@@ -78,6 +81,7 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
             return sb.toString();
         }
     }
+```
 
 #### Method 3:
 
@@ -113,6 +117,7 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
 
 #### Method 4:
 
+```java
     class Solution {
         public boolean reverseVowels(String s) {
             boolean[] vowels = new boolean[128];
@@ -140,3 +145,4 @@ The vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in bot
             returnString.valueOf(charArray);
         }
     }
+```

@@ -1,8 +1,6 @@
 # Can Place Flower
 
-
 ## Problem Statement:
-
 
 You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in **adjacent** plots.
 
@@ -27,12 +25,11 @@ Given an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means e
 * There are no two adjacent flowers in `flowerbed`.
 * `0 <= n <= flowerbed.length`
 
-
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public boolean canPlaceFlowers(int[] flowerbed, int n) {
             int count = 0, i = 0;
@@ -50,3 +47,4 @@ Given an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means e
             return false;
         }
     }
+```

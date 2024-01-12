@@ -38,11 +38,11 @@ Return *a string of the words in reverse order concatenated by a single space.*
 
 **Follow-up: **If the string data type is mutable in your language, can you solve it **in-place** with `O(1)` extra space?
 
-
 ## Solution:
 
 #### Method 1:
 
+```java
     class Solution {
         public boolean reverseWords(String s) {
             String[] strArray = s.split("\\s+");
@@ -53,3 +53,4 @@ Return *a string of the words in reverse order concatenated by a single space.*
             returnsb.append(strArray[0]).toString().trim();
         }
     }
+```

@@ -51,11 +51,12 @@ Kid 1 will always have the greatest number of candies, even if a different kid i
 
 #### Method 1:-
 
+```java
     class Solution {
-        public List`<Boolean>` kidsWithCandies(int[] candies, int extraCandies) {
+        public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
             int candiesLength = candies.length;
             boolean flag = true;
-            List `<Boolean>` boolCandies = new ArrayList();
+            List<Boolean> boolCandies = new ArrayList();
             for (int i = 0; i < candiesLength; i++) {
                 int num = candies[i];
                 int addedCandies = num + extraCandies;
@@ -72,15 +73,16 @@ Kid 1 will always have the greatest number of candies, even if a different kid i
             return boolCandies;
         }
     }
+```
 
 #### Method 2:
 
-
+```java
     class Solution {
-        public List`<Boolean>` kidsWithCandies(int[] candies, int extraCandies) {
+        public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
             int candiesLength = candies.length;
             int max = 0;
-            List `<Boolean>` boolCandies = new ArrayList();
+            List<Boolean> boolCandies = new ArrayList();
             for (int candy: candies) {
                 max = max > candy ? max : candy;
             }
@@ -94,3 +96,4 @@ Kid 1 will always have the greatest number of candies, even if a different kid i
             return boolCandies;
         }
     }
+```
