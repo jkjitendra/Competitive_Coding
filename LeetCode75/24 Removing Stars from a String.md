@@ -39,7 +39,53 @@ There are no more stars, so we return "lecoe".</pre>
 * `s` consists of lowercase English letters and stars `*`.
 * The operation above can be performed on `s`.
 
-
 ## Solution:
 
 #### Method 1:
+
+```java
+  class Solution {
+    public String removeStars(String s) {
+      int n = s.length();
+      Stack lifo = new Stack();
+      String sb = "";
+      for (int i = 0; i < n; i++) {
+        if (s.charAt(i) == '*' && i-1 >= 0) {
+          lifo.pop();
+        } else {
+          lifo.push(s.charAt(i));
+        }
+      }
+      for (int i = 0; i < lifo.size(); i++) {
+        sb += lifo.get(i);
+      }
+      return sb;
+    }
+  }
+```
+
+
+#### Method 2:
+
+```java
+  class Solution {
+    public String removeStars(String s) {
+      int len = s.length();
+      byte[] result = new byte[len];
+      int resultIndex = 0;
+      for (int i = 0; i < len; i++) {
+        if (s.charAt(i) == '*') {
+          if (resultIndex > 0) {
+              resultIndex--;
+          }
+        } else {
+          result[resultIndex] = (byte) s.charAt(i);
+          resultIndex++;
+        }
+      }
+      return new String(result, 0, resultIndex);
+    }
+  }
+
+
+```
