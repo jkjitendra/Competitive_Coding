@@ -35,7 +35,61 @@ Find out the state of the asteroids after all collisions. If two asteroids meet,
 * `-1000 <= asteroids[i] <= 1000`
 * `asteroids[i] != 0`
 
-
 ## Solution:
 
 #### Method 1:
+
+```java
+  class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+      int n = asteroids.length;
+      Stack<Integer> stack = new Stack<>();
+
+      for (int i = 0; i < n; i++) {
+        int currentAsteroid = asteroids[i];
+        if (currentAsteroid > 0) {
+          stack.push(currentAsteroid);
+        } else {
+          while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() + currentAsteroid < 0) {
+            stack.pop();
+          }
+          if (stack.isEmpty() || stack.peek() < 0) {
+            stack.push(currentAsteroid);
+          } else if (stack.peek() + currentAsteroid == 0) {
+            stack.pop();
+          }
+        }
+      }
+      int stackSize = stack.size();
+      int[] stateOfAsteroid = new int[stackSize];
+      for (int i = stackSize - 1; i >= 0; i--) {
+        stateOfAsteroid[i] = stack.pop();
+      }
+      return stateOfAsteroid;
+    }
+  }
+```
+
+
+#### Method 2:
+
+```java
+  class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+      int topIndex = -1;
+      for(int currentAsteroid : asteroids) {
+        boolean isAlive = true;
+        while(isAlive && currentAsteroid < 0 && topIndex >= 0 && asteroids[topIndex] > 0 ) {
+          isAlive = (currentAsteroid + asteroids[topIndex]) < 0 ? true : false;
+          if(currentAsteroid + asteroids[topIndex] <= 0) {
+              topIndex--; 
+          }
+        }
+        if(isAlive) {
+          asteroids[++topIndex] = currentAsteroid;
+        }
+      }
+      return Arrays.copyOf(asteroids , topIndex + 1);
+    }
+  }
+```
