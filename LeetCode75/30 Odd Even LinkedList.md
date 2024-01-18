@@ -31,7 +31,6 @@ You must solve the problem in `O(1)` extra space complexity and `O(n)` time comp
 * The number of nodes in the linked list is in the range `[0, 10<sup>4</sup>]`.
 * `-10<sup>6</sup> <= Node.val <= 10<sup>6</sup>`
 
-
 ## Solution:
 
 #### Method 1:
@@ -49,13 +48,13 @@ You must solve the problem in `O(1)` extra space complexity and `O(n)` time comp
  */
 class Solution {
   public ListNode oddEvenList(ListNode head) {
-    if(head==null||head.next==null){
-            return head;
+    if(head == null || head.next == null){
+      return head;
     }
-    ListNode odd=head;
+    ListNode odd = head;
     ListNode even = head.next;
     ListNode enHead = even;
-    while (even != null && even.next != null && odd!=null&&odd.next!=null) {
+    while (even != null && even.next != null && odd != null && odd.next != null) {
       odd.next = even.next;
       odd = odd.next;
       even.next = odd.next;
