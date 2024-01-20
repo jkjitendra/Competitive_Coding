@@ -38,5 +38,37 @@ Return `true` if and only if the two given trees with head nodes `root1` and `ro
 #### Method 1:
 
 ```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+  public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+    List<Integer> sequenceList1 = new ArrayList<>();
+    List<Integer> sequenceList2 = new ArrayList<>();
+    addLeaf(root1, sequenceList1);
+    addLeaf(root2, sequenceList2);
+    return sequenceList1.equals(sequenceList2);
+  }
 
+  public void addLeaf(TreeNode root, List<Integer> sequenceList) {
+    if (root == null)
+      return;
+    addLeaf(root.left, sequenceList);
+    if (root.left == null && root.right == null)
+      sequenceList.add(root.val);
+    addLeaf(root.right, sequenceList);
+  }
+}
 ```
