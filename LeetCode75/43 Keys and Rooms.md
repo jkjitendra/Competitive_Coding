@@ -61,3 +61,27 @@ class Solution {
   }
 }
 ```
+
+#### Method 2:
+
+```java
+class Solution {
+  public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+    boolean[] visited = new boolean[rooms.size()];
+    int totalVisitedRooms = calculateTotalVisitedRooms(0, rooms,visited, 0);
+    return totalVisitedRooms == rooms.size();
+  }
+
+  public int calculateTotalVisitedRooms(int key, List<List<Integer>> rooms, boolean[]visited, int count) {
+    visited[key] = true;
+    count++;
+    for (int room : rooms.get(key)) {
+      if (!visited[room]) {
+        count = calculateTotalVisitedRooms(room, rooms, visited, count);
+      }
+    }
+    return count;
+  }
+}
+
+```
