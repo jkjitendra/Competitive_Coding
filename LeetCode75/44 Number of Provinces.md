@@ -35,7 +35,6 @@ Return  *the total number of **provinces*** .
 * `isConnected[i][i] == 1`
 * `isConnected[i][j] == isConnected[j][i]`
 
-
 ## Solution:
 
 #### Method 1:
@@ -45,24 +44,61 @@ class Solution {
   public int findCircleNum(int[][] isConnected) {
     int totalProvinces = 0;
     int n = isConnected.length;
-    for (int i = 0; i < n; i++) {
-      if (isConnected[i][i] == 1) {
+    boolean visited[]=new boolean[n];
+    int sourceCity = 0;
+    while(sourceCity < n) {
+      if(!visited[sourceCity]) {
+        markCitiesVisitedInAProvince(sourceCity, isConnected, visited , n);
         totalProvinces++;
-        checkIfConnected(isConnected, i, n);
       }
+      sourceCity++;
     }
     return totalProvinces;
   }
 
-  public static void checkIfConnected(int[][] isConnected, int i, int n) {
-    isConnected[i][i] = 0;
-    for (int j = 0; j < n; j++) {
-      if (isConnected[i][j] == 1) {
-        isConnected[i][j] = 0;
-        if (isConnected[j][j] == 1)
-          checkIfConnected(isConnected, j, n);
+  public static void markCitiesVisitedInAProvince(int sourceCity, int[][] isConnected, boolean[] visited, int n) {
+    visited[sourceCity]=true;
+    int city = 0;
+    while (city < n){
+      if(!visited[city] && isConnected[sourceCity][city] == 1) {
+        markCitiesVisitedInAProvince(city, isConnected, visited, n);
       }
+      city++;
     }
   }
 }
+
+```
+
+#### Method 2:
+
+```java
+class Solution {
+  public int findCircleNum(int[][] isConnected) {
+    int n = isConnected.length;
+    boolean[] visited = new boolean[n];
+    int totalProvinces = 0;
+  
+    for (int i = 0; i < n; i++) {
+      if (!visited[i]) {
+        totalProvinces++;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(i);
+
+        while (!stack.isEmpty()) {
+          int node = stack.pop();
+          visited[node] = true;
+    
+          for (int j = 0; j < n; j++) {
+            if (isConnected[node][j] == 1 && !visited[j]) {
+              stack.push(j);
+            }
+          }
+        }
+      }
+    }
+    return totalProvinces;
+  }
+}
+
 ```
