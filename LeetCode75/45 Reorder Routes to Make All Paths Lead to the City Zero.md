@@ -91,9 +91,9 @@ class Solution {
 ```java
 class Solution {
 
-  public int minReorder(int totalCities, int[][] connections) {
+  public int minReorder(int n, int[][] connections) {
     List<int[]> pendingConnections = new ArrayList<>();
-    boolean[] isCityConnected = new boolean[totalCities];
+    boolean[] isCityConnected = new boolean[n];
     isCityConnected[0] = true;
     int reorderCount = 0;
 
