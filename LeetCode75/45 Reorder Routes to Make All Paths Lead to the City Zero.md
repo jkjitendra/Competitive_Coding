@@ -87,3 +87,66 @@ class Solution {
 
 
 #### Method 2:
+
+```java
+class Solution {
+
+  public int minReorder(int totalCities, int[][] connections) {
+    List<int[]> pendingConnections = new ArrayList<>();
+    boolean[] isCityConnected = new boolean[totalCities];
+    isCityConnected[0] = true;
+    int reorderCount = 0;
+
+    for (int[] connection : connections) {
+      int sourceCity = connection[0], destinationCity = connection[1];
+      if (isCityConnected[destinationCity]) {
+        isCityConnected[sourceCity] = true;
+      } else if (isCityConnected[sourceCity]) {
+        isCityConnected[destinationCity] = true;
+        reorderCount++;
+      } else {
+        pendingConnections.add(connection);
+      }
+    }
+
+    while (!pendingConnections.isEmpty()) {
+      for (int i = 0; i < pendingConnections.size(); i++) {
+        boolean isConnectedUpdated = false;
+        int[] currentConnection = pendingConnections.get(i);
+        int sourceCity = currentConnection[0], destinationCity = currentConnection[1];
+        if (isCityConnected[destinationCity]) {
+          isCityConnected[sourceCity] = true;
+          isConnectedUpdated = true;
+        } else if (isCityConnected[sourceCity]) {
+          isCityConnected[destinationCity] = true;
+          reorderCount++;
+          isConnectedUpdated = true;
+        }
+        if (isConnectedUpdated) {
+          pendingConnections.remove(i);
+          i--;
+        }
+      }
+
+      for (int i = pendingConnections.size() - 1; i >= 0; i--) {
+        boolean isConnectedUpdated = false;
+        int[] currentConnection = pendingConnections.get(i);
+        int sourceCity = currentConnection[0], destinationCity = currentConnection[1];
+        if (isCityConnected[destinationCity]) {
+          isCityConnected[sourceCity] = true;
+          isConnectedUpdated = true;
+        } else if (isCityConnected[sourceCity]) {
+          isCityConnected[destinationCity] = true;
+          reorderCount++;
+          isConnectedUpdated = true;
+        }
+        if (isConnectedUpdated) {
+          pendingConnections.remove(i);
+        }
+      }
+    }
+    return reorderCount;
+  }
+}
+
+```
