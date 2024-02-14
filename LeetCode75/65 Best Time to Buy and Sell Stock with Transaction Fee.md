@@ -53,9 +53,3 @@ class Solution {
   }
 }
 ```
-
-#### Method 2:
-
-```java
-
-```
