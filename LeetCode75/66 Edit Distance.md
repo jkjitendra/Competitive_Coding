@@ -66,3 +66,35 @@ class Solution {
 ```
 
 #### Method 2:
+
+```java
+class Solution {
+  public int minDistance(String word1, String word2) {
+    Integer[][] dp = new Integer[word1.length()][word2.length()];
+    return minDistanceHelper(word1, word2, word1.length(), word2.length(), dp);
+  }
+
+  private int minDistanceHelper(String word1, String word2, int m, int n, Integer[][] dp) {
+    if (m == 0) return n; // If word1 is empty, all characters of word2 need to be inserted
+    if (n == 0) return m; // If word2 is empty, all characters of word1 need to be deleted
+
+    // Check if result is already computed in dp table
+    if (dp[m - 1][n - 1] != null) {
+      return dp[m - 1][n - 1];
+    }
+
+    // If characters are equal, move diagonally without any operation
+    if (word1.charAt(m - 1) == word2.charAt(n - 1)) {
+      dp[m - 1][n - 1] = minDistanceHelper(word1, word2, m - 1, n - 1, dp);
+    } else {
+      int deleteCost = minDistanceHelper(word1, word2, m - 1, n, dp);
+      int insertCost = minDistanceHelper(word1, word2, m, n - 1, dp);
+      int replaceCost = minDistanceHelper(word1, word2, m - 1, n - 1, dp);
+
+      dp[m - 1][n - 1] = 1 + Math.min(Math.min(deleteCost, insertCost), replaceCost);
+    }
+
+    return dp[m - 1][n - 1];
+  }
+}
+```
