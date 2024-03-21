@@ -4,7 +4,7 @@
 
 Geek is appearing for a coding contest. The aim of the contest is to score **exactly N points.** He is given an **integer k**, before the start of the contest.
 
-For **each problem he solves** during the contest, he is asked to choose an integer m, and m `<sup>`k `</sup>` **is added to his score**.
+For **each problem he solves** during the contest, he is asked to choose an integer m, and `m`<sup>`k`</sup> **is added to his score**.
 
 Help Geek find the **minimum number of problems** he must solve to achieve **exactly N points.**
 
@@ -41,13 +41,46 @@ This is a function problem. The input is already taken care of by the driver cod
 
 #### Constraints:
 
-- 1<=N<=20000
-- 1<=K<=29
+- 1 <= N <= 20000
+- 1 <= K <= 29
 
 ## Solution:
 
 #### Method 1:
 
 ```java
+import java.io.*;
+import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0) {
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+        
+            Solution obj = new Solution();
+            System.out.println(obj.score(n, k));
+        }
+        sc.close();
+    }
+}
+
+class Solution {
+    public int score(int n, int k) {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+
+        for (int currentScore = 1; currentScore <= n; currentScore++) {
+            for (int m = 1; Math.pow(m, k) <= currentScore; m++) {
+                if (Math.pow(m, k) <= currentScore) {
+                    dp[currentScore] = Math.min(dp[currentScore], 1 + dp[currentScore - (int) Math.pow(m, k)]);
+                }
+            }
+        }
+        return dp[n];
+    }
+}
 ```
