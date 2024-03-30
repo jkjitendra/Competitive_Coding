@@ -13,7 +13,7 @@ You are given a range of integers from **startRange** to **endRange** (inclusive
 * Pairs of numbers within the given range where each number and its reverse have the same number of iterations required in a binary search process. For each pair, also include the shared iteration count.
   If there are no such pairs, the program should indicate that no matching pairs were found by printing "No matching pairs found".
 
-**Example:**
+**Example1:**
 
 ```
 Input:
@@ -47,6 +47,24 @@ Explanation:
 
 Number 10 can be found in 6 iterations using binary search in the range 1 to 100. Similarly reverse of number 10 i.e., number 1 can also be found in 6 iterations in the range 1 to 100. Therefore, 10 and its reverse are a valid pair for the given range of integers.
 ```
+
+**Example2:**
+
+```
+Input:
+
+startRange = 1
+endRange = 10
+
+Output:
+
+No matching pairs found.
+
+Explanation:
+
+There doesn't exists any pair whose iterations are equal in the given range.
+```
+
 
 **Constraints:**
 
