@@ -80,7 +80,7 @@ Explanation
 8. Hence, the output is a single line showing the hot path of the program, with each function's total bytes allocated appearing after it. For example, the total memory allocated of 'open doc' function is 7200 bytes. The total memory allocated by fread(), including its nested fread() calls is 6000 bytes, while memory allocated only by itself is 3000 bytes.
 
 
-![alt text](image.png)
+![alt text](visual-representation.jpg)
 
 ## Solution
 
